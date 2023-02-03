@@ -21,7 +21,6 @@ public class MouseLook : MonoBehaviour
 
     private float rotationX = 0.0f;
 
-
     // public class-scope variable so it shows up in Inspector
     public RotationAxes axes = RotationAxes.MouseXAndY;
     // Update is called once per frame
