@@ -1,11 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static WanderingAI;
 
 public class ReactiveTarget : MonoBehaviour
 {
     public void ReactToHit()
     {
+        WanderingAI enemyAI = GetComponent<WanderingAI>();
+        if (enemyAI != null)
+        {
+            enemyAI.ChangeState(EnemyStates.dead);
+        }
+
         StartCoroutine(Die());
     }
     private IEnumerator Die()
