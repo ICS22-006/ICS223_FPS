@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class OptionsPopup : MonoBehaviour
 {
     [SerializeField] private UIController uiController;
+    [SerializeField] private SettingsPopup settingsPopup;
 
     public void Open()
     {
@@ -21,6 +22,8 @@ public class OptionsPopup : MonoBehaviour
     }
     public void OnSettingsButton()
     {
+        Close();
+        settingsPopup.Open();
         Debug.Log("settings clicked");
     }
     public void OnExitGameButton()

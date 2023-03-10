@@ -10,11 +10,13 @@ public class UIController : MonoBehaviour
     [SerializeField] private Image healthBar;
     [SerializeField] private Image crossHair;
     [SerializeField] private OptionsPopup optionsPopup;
+    [SerializeField] private SettingsPopup settingsPopup;
 
     private int score = 0;
     // Start is called before the first frame update
     void Start()
     {
+        SetGameActive(true);
         UpdateScore(score);
         healthBar.fillAmount = 1;
         healthBar.color = Color.green;
@@ -23,12 +25,11 @@ public class UIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !optionsPopup.IsActive())
+        if (Input.GetKeyDown(KeyCode.Escape) && !optionsPopup.IsActive() && !settingsPopup.IsActive())
         {
             SetGameActive(false);
             optionsPopup.Open();
-        }
-
+        } 
     }
 
     // update score display
@@ -39,6 +40,7 @@ public class UIController : MonoBehaviour
 
     public void SetGameActive(bool active)
     {
+        print("SetGameActive: " + active);
         if (active)
         {
             Time.timeScale = 1; // unpause the game
