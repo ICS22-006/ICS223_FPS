@@ -11,6 +11,7 @@ public class ReactiveTarget : MonoBehaviour
         if (enemyAI != null)
         {
             enemyAI.ChangeState(EnemyStates.dead);
+            Messenger.Broadcast(GameEvent.ENEMY_DEAD);
         }
 
         Animator enemyAnimator = GetComponent<Animator>();

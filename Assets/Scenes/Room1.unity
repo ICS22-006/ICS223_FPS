@@ -888,8 +888,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1539043829}
-  m_RootOrder: -1
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &186569340
 MonoBehaviour:
@@ -905,6 +905,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 3937058383487562464, guid: ab027ded2292d6943a7e30889e00c287, type: 3}
   iguanaPrefab: {fileID: 141256, guid: b4806bcfd71324778b360c0299195b34, type: 3}
+  ui: {fileID: 524390695}
 --- !u!1 &195877721
 GameObject:
   m_ObjectHideFlags: 0
@@ -12540,7 +12541,6 @@ Transform:
   - {fileID: 2085244801}
   - {fileID: 900978946}
   - {fileID: 1562194858}
-  - {fileID: 186569339}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
