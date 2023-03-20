@@ -25,6 +25,12 @@ public class MouseLook : MonoBehaviour
     public RotationAxes axes = RotationAxes.MouseXAndY;
     // Update is called once per frame
 
+    private void Start()
+    {
+        Messenger.AddListener(GameEvent.GAME_ACTIVE, OnGameActive);
+        Messenger.AddListener(GameEvent.GAME_INACTIVE, OnGameInactive);
+    }
+
     void Update()
     {
         if (axes == RotationAxes.MouseX)
@@ -46,5 +52,14 @@ public class MouseLook : MonoBehaviour
             float rotationY = transform.localEulerAngles.y + deltaHoriz;
             transform.localEulerAngles = new Vector3(rotationX, rotationY, 0);
         }
+    }
+    void OnGameActive()
+    {
+        this.enabled = true;
+    }
+
+    void OnGameInactive()
+    {
+        this.enabled = false;
     }
 }

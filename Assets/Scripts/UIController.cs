@@ -69,6 +69,7 @@ public class UIController : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked; // lock cursor at center
             Cursor.visible = false; // hide cursor 
             crossHair.gameObject.SetActive(true); // show the crosshair
+            Messenger.Broadcast(GameEvent.GAME_ACTIVE);
         }
         else
         {
@@ -76,6 +77,7 @@ public class UIController : MonoBehaviour
             Cursor.lockState = CursorLockMode.None; // let cursor move freely
             Cursor.visible = true; // show the cursor
             crossHair.gameObject.SetActive(false); // turn off the crosshair
+            Messenger.Broadcast(GameEvent.GAME_INACTIVE);
         }
     }
 
