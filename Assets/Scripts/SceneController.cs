@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
@@ -25,13 +26,27 @@ public class SceneController : MonoBehaviour
     {
         Messenger<int>.AddListener(GameEvent.DIFFICULTY_CHANGED, OnDifficultyChanged);
         Messenger.AddListener(GameEvent.ENEMY_DEAD, OnEnemyDead);
+        Messenger.AddListener(GameEvent.PLAYER_DEAD, OnPlayerDead);
+        Messenger.AddListener(GameEvent.RESTART_GAME, OnRestartGame);
     }
     private void OnDestroy()
     {
         Messenger.RemoveListener(GameEvent.ENEMY_DEAD, OnEnemyDead);
         Messenger<int>.RemoveListener(GameEvent.DIFFICULTY_CHANGED, OnDifficultyChanged);
+        Messenger.RemoveListener(GameEvent.PLAYER_DEAD, OnPlayerDead);
+        Messenger.RemoveListener(GameEvent.RESTART_GAME, OnRestartGame);
     }
-    
+
+    public void OnRestartGame()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    private void OnPlayerDead()
+    {
+        ui.ShowGameOverPopup();
+    }
+
     private void OnEnemyDead()
     {
         score++;
@@ -59,7 +74,7 @@ public class SceneController : MonoBehaviour
         numOfEnemies = 5;
         enemies = new GameObject[numOfEnemies];
 
-        numOfIguanas = 10;
+        numOfIguanas = 1;
         iguanas = new GameObject[numOfIguanas];
         for (int i = 0; i < numOfIguanas; i++)
         {

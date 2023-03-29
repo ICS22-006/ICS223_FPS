@@ -11,6 +11,8 @@ public class UIController : MonoBehaviour
     [SerializeField] private Image crossHair;
     [SerializeField] private OptionsPopup optionsPopup;
     [SerializeField] private SettingsPopup settingsPopup;
+    [SerializeField] private GameOverPopup gameOverPopup;
+
     private int popupsActive = 0;
 
     // private int score = 0;
@@ -20,9 +22,9 @@ public class UIController : MonoBehaviour
         Messenger<float>.AddListener(GameEvent.HEALTH_CHANGED, OnHealthChanged);
         Messenger.AddListener(GameEvent.POPUP_OPENED, OnPopupOpened);
         Messenger.AddListener(GameEvent.POPUP_CLOSED, OnPopupClosed);
-        SetGameActive(true);
         // UpdateScore(score);
         UpdateHealth(1f);
+        SetGameActive(true);
     }
 
     private void OnPopupOpened()
@@ -33,6 +35,7 @@ public class UIController : MonoBehaviour
         }
         popupsActive++;
     }
+
     private void OnPopupClosed()
     {
         popupsActive--;
@@ -52,6 +55,11 @@ public class UIController : MonoBehaviour
                 optionsPopup.Open();
             }
         }
+    }
+
+    public void ShowGameOverPopup()
+    {
+        gameOverPopup.Open();
     }
 
     // update score display

@@ -9,6 +9,7 @@ public class FPSInput : MonoBehaviour
     private float horizInput;
     private float vertInput;
     private float gravity = -9.8f;
+    private float pushForce = 5.0f;
 
     private Vector3 movement;
 
@@ -37,5 +38,15 @@ public class FPSInput : MonoBehaviour
         // Convert local to global coordinates
         movement = transform.TransformDirection(movement);
         charController.Move(movement);
+    }
+
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        Rigidbody body = hit.collider.attachedRigidbody;
+        // does it have a rigidbody and is Physics enabled?
+        if (body != null && !body.isKinematic)
+        {
+            body.velocity = hit.moveDirection * pushForce;
+        }
     }
 }
