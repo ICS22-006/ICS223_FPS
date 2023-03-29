@@ -8,7 +8,7 @@ public class WanderingAI : MonoBehaviour
     private float obstacleRange = 5.0f;
     private float sphereRadius = 0.75f;
     public enum EnemyStates {  alive, dead };
-    private EnemyStates state;
+    public EnemyStates state { get; private set; }
 
     [SerializeField] private GameObject laserbeamPrefab;
     private GameObject laserbeam;

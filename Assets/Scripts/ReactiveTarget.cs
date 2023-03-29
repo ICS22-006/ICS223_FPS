@@ -8,6 +8,10 @@ public class ReactiveTarget : MonoBehaviour
     public void ReactToHit()
     {
         WanderingAI enemyAI = GetComponent<WanderingAI>();
+        if (enemyAI.state == EnemyStates.dead)
+        {
+            return;
+        }
         if (enemyAI != null)
         {
             enemyAI.ChangeState(EnemyStates.dead);
@@ -19,7 +23,6 @@ public class ReactiveTarget : MonoBehaviour
         {
             enemyAnimator.SetTrigger("Die");
         }
-
 
         // StartCoroutine(Die());
     }
